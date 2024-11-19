@@ -132,19 +132,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 296518741193082668, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 296518741193082668, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 296518741193082668, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 296518741193082668, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406504788102760830, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 326.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 499393558856000573, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_Name
+      value: Accept
       objectReference: {fileID: 0}
     - target: {fileID: 640276534635164532, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_text
@@ -166,21 +174,25 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4286837503
       objectReference: {fileID: 0}
+    - target: {fileID: 1487999792877023969, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_text
+      value: Accept
+      objectReference: {fileID: 0}
     - target: {fileID: 1683503395012015909, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1683503395012015909, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1683503395012015909, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1683503395012015909, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1725751452826982522, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_IsActive
@@ -200,19 +212,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3954618313679684314, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954618313679684314, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954618313679684314, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3954618313679684314, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4326946012648148500, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -501,6 +513,7 @@ PrefabInstance:
     - {fileID: 2512863302567479667, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
     - {fileID: 4934473077269232523, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
     - {fileID: 7633550582211173508, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+    - {fileID: 2193602764582808303, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}

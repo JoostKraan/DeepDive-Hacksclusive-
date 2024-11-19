@@ -11,6 +11,9 @@ public class ApplicationHandler : MonoBehaviour {
     [SerializeField] private GameObject Element;
 
     [SerializeField] private Dictionary<string, GameObject> ElementHistory = new Dictionary<string, GameObject>();
+    [SerializeField] private Canvas canvas;
+    private bool IsDragging = false;
+    
 
     public void InteractApplication(string ApplicationName) {
         foreach (PanelInfo panelInfo in Panels) {
