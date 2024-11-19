@@ -23,30 +23,21 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -159.9
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -180
+        inSlope: 1822.058
+        outSlope: 1822.058
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0.4162371
+        outWeight: 0.1571013
       - serializedVersion: 3
-        time: 0.25
-        value: 56.6
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.55
+        time: 0.5
         value: 0
-        inSlope: 0
+        inSlope: -835.32385
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 1
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.23413193
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2
@@ -119,30 +110,21 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -159.9
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -180
+        inSlope: 1822.058
+        outSlope: 1822.058
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0.4162371
+        outWeight: 0.1571013
       - serializedVersion: 3
-        time: 0.25
-        value: 56.6
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.55
+        time: 0.5
         value: 0
-        inSlope: 0
+        inSlope: -835.32385
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 1
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.23413193
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2

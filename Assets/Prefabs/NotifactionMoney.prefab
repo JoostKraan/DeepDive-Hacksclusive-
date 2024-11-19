@@ -146,7 +146,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.00018310547, y: 32.3}
-  m_SizeDelta: {x: 256.49, y: 50}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2992502216842098174
 CanvasRenderer:
@@ -179,8 +179,7 @@ MonoBehaviour:
   m_text: 400
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25e394f90ada03b41adcb6bfbd39383d, type: 2}
-  m_sharedMaterial: {fileID: -4588281343653574257, guid: 25e394f90ada03b41adcb6bfbd39383d,
-    type: 2}
+  m_sharedMaterial: {fileID: -4588281343653574257, guid: 25e394f90ada03b41adcb6bfbd39383d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -307,16 +306,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4827922255210056072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f00c11a1d369c974999ccf11e435940d, type: 3}
+  m_Script: {fileID: 11500000, guid: 15ffed04a8d77174089f69fcca981796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 2297750540453340374}
-  animator: {fileID: 598915746695283871}
-  moneyText: {fileID: 8839511228310730522}
-  reasonForMoneyText: {fileID: 1817456668033553691}
-  background: {fileID: 6250401311824038213}
-  goodColor: {r: 0.7411765, g: 1, b: 0.7294118, a: 1}
-  badColor: {r: 1, g: 0.4669811, b: 0.4669811, a: 1}
 --- !u!114 &6250401311824038213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,8 +599,7 @@ MonoBehaviour:
   m_text: You deleted a spam email! Good job! Free pizza on me!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25e394f90ada03b41adcb6bfbd39383d, type: 2}
-  m_sharedMaterial: {fileID: -4588281343653574257, guid: 25e394f90ada03b41adcb6bfbd39383d,
-    type: 2}
+  m_sharedMaterial: {fileID: -4588281343653574257, guid: 25e394f90ada03b41adcb6bfbd39383d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
