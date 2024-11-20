@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +6,7 @@ public class MoneyPopup : MonoBehaviour
     private Animator _animator;
     private TMP_Text _moneyText;
 
-    public int money;
+    public float money;
 
     private void Awake()
     {
@@ -20,8 +18,10 @@ public class MoneyPopup : MonoBehaviour
     {
         Destroy(gameObject, 3); //Destroy self after 3 seconds
     }
-    public void PlayPopup(int money)
+    public void PlayPopup(float money)
     {
+        money = Mathf.RoundToInt(money);
+
         bool isNegative = money < 0;
         if (isNegative)
         {

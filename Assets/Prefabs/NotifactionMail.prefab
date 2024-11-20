@@ -68,8 +68,7 @@ MonoBehaviour:
   m_text: you've got mail
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 25e394f90ada03b41adcb6bfbd39383d, type: 2}
-  m_sharedMaterial: {fileID: -4588281343653574257, guid: 25e394f90ada03b41adcb6bfbd39383d,
-    type: 2}
+  m_sharedMaterial: {fileID: -4588281343653574257, guid: 25e394f90ada03b41adcb6bfbd39383d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -335,11 +334,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8000619427771108676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d5853ac9111264f8eba9ff87f5aa96, type: 3}
+  m_Script: {fileID: 11500000, guid: faecc63bc49bc584387e3c060b9c1473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 6449666790311785095}
-  animator: {fileID: 736134024804580886}
 --- !u!95 &736134024804580886
 Animator:
   serializedVersion: 5
