@@ -1857,11 +1857,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3861658837294216442, guid: 33189978efbc0864096fd6eea12606f2, type: 3}
       propertyPath: m_Name
-      value: NotifactionMoney
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861658837294216442, guid: 33189978efbc0864096fd6eea12606f2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: NotificationMoney
       objectReference: {fileID: 0}
     - target: {fileID: 4827922255210056072, guid: 33189978efbc0864096fd6eea12606f2, type: 3}
       propertyPath: m_Name
