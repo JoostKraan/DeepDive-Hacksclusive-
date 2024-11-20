@@ -1,21 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEditor;
+using System.Text.RegularExpressions;
 
 public class ScoreHandler : MonoBehaviour
 {
     public int TotalMoney;
-    private TMP_Text _moneyText;
+    private TMP_Text _notificationMoneyText;
+    private Transform _totalMoneyTransform;
+    private TMP_Text _totalMoneyText;
 
-private void Awake()
+    private int notificationMoney;
+
+    private void Awake()
     {
-        _moneyText = GameObject.Find("MoneyText").GetComponent<TMP_Text>();
+        _notificationMoneyText = GameObject.Find("MoneyText").GetComponent<TMP_Text>();
+        _totalMoneyTransform = GameObject.Find("TotalMoney").transform;
+        _totalMoneyText = _totalMoneyTransform.GetComponent<TMP_Text>();
     }
+
+    private void Start()
+    {
+        TotalMoney = 1000;
+    }
+
     public void AddMoney(int amount = 1)
     {
         TotalMoney += amount;
 
-        _moneyText.text = TotalMoney.ToString();
+
+        var moneyPopup = Resources.Load("Prefabs/MoneyPopup");
+        Instantiate(moneyPopup, _totalMoneyTransform); //Spawn money popup
+    }
+
+    private void UpdateText()
+    {
+        _totalMoneyText.text = $"${TotalMoney}";
+        _notificationMoneyText.text = notificationMoney.ToString();
+    }
+
+    private void Update()
+    {
+        UpdateText();
     }
 }
