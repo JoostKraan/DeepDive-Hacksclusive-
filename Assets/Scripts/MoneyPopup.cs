@@ -7,6 +7,7 @@ public class MoneyPopup : MonoBehaviour
     private TMP_Text _moneyText;
 
     public float money;
+    public string prefix;
 
     private void Awake()
     {
@@ -20,17 +21,17 @@ public class MoneyPopup : MonoBehaviour
     }
     public void PlayPopup(float money)
     {
-        money = Mathf.RoundToInt(money);
+        //money = Mathf.RoundToInt(money);
 
         bool isNegative = money < 0;
         if (isNegative)
         {
-            _moneyText.text = $"-${money}";
+            _moneyText.text = $"-{prefix}{money}";
             _moneyText.color = Color.red;
         }
         else
         {
-            _moneyText.text = $"+${money}";
+            _moneyText.text = $"+{prefix}{money}";
         }
 
         _animator.Play("PopUpFade");

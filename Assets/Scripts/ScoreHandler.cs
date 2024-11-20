@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScoreHandler : MonoBehaviour
 {
+    public string prefix = "B$ ";
     public bool click;
     public float moneyToAdd;
     [Space(10)]
@@ -19,15 +20,15 @@ public class ScoreHandler : MonoBehaviour
 
     private void Awake()
     {
-        _notificationMoneyText = GameObject.Find("NotifactionMoney").transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>();
-        notificationPopup = GameObject.Find("NotifactionMoney").transform.GetChild(0).GetComponent<NotificationPopup>();
+        _notificationMoneyText = GameObject.Find("NotificationMoney").transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        notificationPopup = GameObject.Find("NotificationMoney").transform.GetChild(0).GetComponent<NotificationPopup>();
         _totalMoneyTransform = GameObject.Find("TotalMoney").transform;
         _totalMoneyText = _totalMoneyTransform.GetComponent<TMP_Text>();
     }
 
     private void Start()
     {
-        TotalMoney = 1000;
+        TotalMoney = 0.0012f;
     }
 
     public void AddMoney(float amount, float multiplier = 1)
@@ -42,16 +43,19 @@ public class ScoreHandler : MonoBehaviour
         notificationPopup.Play();
 
         var moneyPopup = Resources.Load("Prefabs/MoneyPopup");
-        moneyPopup.GetComponent<MoneyPopup>().money = amount;
+        var moneyPopupScript = moneyPopup.GetComponent<MoneyPopup>();
+        moneyPopupScript.money = amount;
+        moneyPopupScript.prefix = prefix;
         Instantiate(moneyPopup, _totalMoneyTransform); //Spawn money popup
     }
 
     private void UpdateText()
     {
-        int totalMoneyRounded = Mathf.RoundToInt(TotalMoney);
-        int notificationMoneyRounded = Mathf.RoundToInt(notificationMoney);
+        int decimalPoint = 10000;
+        float totalMoneyRounded = Mathf.Round(TotalMoney * decimalPoint) / decimalPoint;
+        float notificationMoneyRounded = Mathf.Round(notificationMoney * decimalPoint) / decimalPoint;
 
-        _totalMoneyText.text = $"${totalMoneyRounded}";
+        _totalMoneyText.text = $"{prefix}{totalMoneyRounded}";
         _notificationMoneyText.text = $"{notificationMoneyRounded}";
     }
 
