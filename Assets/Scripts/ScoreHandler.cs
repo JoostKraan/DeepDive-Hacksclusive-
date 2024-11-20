@@ -40,8 +40,10 @@ public class ScoreHandler : MonoBehaviour
 
         UpdateText();
 
-        notificationPopup.Play();
-
+        if (amount > 0)
+        {
+            notificationPopup.Play();
+        }
         var moneyPopup = Resources.Load("Prefabs/MoneyPopup");
         var moneyPopupScript = moneyPopup.GetComponent<MoneyPopup>();
         moneyPopupScript.money = amount;
