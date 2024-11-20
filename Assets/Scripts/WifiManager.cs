@@ -13,11 +13,13 @@ public class WifiManager : MonoBehaviour
     public bool vpn = false;
     public TextMeshProUGUI currentConnection;
     public GameObject connectedIcon, notConnectedIcon;
+    public GameObject wifiDisconnectedStat, wifiConnectedStat;
     public GameObject activeVpnIcon, inactiveVpnIcon;
 
     void Start()
     {
         StartCoroutine(vpnCounter());
+        StartCoroutine(DisconnectionCounter());
     }
 
     private void Update()
@@ -26,11 +28,16 @@ public class WifiManager : MonoBehaviour
         {
             connectedIcon.SetActive(true);
             notConnectedIcon.SetActive(false);
+            
+            wifiDisconnectedStat.SetActive(false);
+            wifiConnectedStat.SetActive(true);
         }
         else
         {
             connectedIcon.SetActive(false);
             notConnectedIcon.SetActive(true);
+            wifiDisconnectedStat.SetActive(true);
+            wifiConnectedStat.SetActive(false);
         }
     }
 
@@ -106,6 +113,20 @@ public class WifiManager : MonoBehaviour
                 vpn = false;
                 activeVpnIcon.SetActive(false);
                 inactiveVpnIcon.SetActive(true);
+            }
+            yield return null;
+        }
+    }
+    IEnumerator DisconnectionCounter()
+    {
+        while (true)
+        {
+            if (isConnected)
+            {
+                yield return new WaitForSeconds(30);
+                isConnected = false;
+                wifiConnectedStat.SetActive(false);
+                wifiDisconnectedStat.SetActive(true);
             }
             yield return null;
         }
