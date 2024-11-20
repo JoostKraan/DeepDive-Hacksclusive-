@@ -210,6 +210,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 1770.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3874233919072210375, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -18.381
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874233919072210375, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000043869
+      objectReference: {fileID: 0}
     - target: {fileID: 3954618313679684314, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -408,8 +416,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6551188391490194427, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6576950350741797588, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 4900000, guid: 22d73bcd856247f4b9d95576d28c766a, type: 3}
+    - target: {fileID: 6576950350741797588, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: jsonFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 22d73bcd856247f4b9d95576d28c766a, type: 3}
+    - target: {fileID: 6576950350741797588, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: MailButton
+      value: 
+      objectReference: {fileID: 2324454651046025928, guid: f3555a98026db6647b3bd8ba704a727e, type: 3}
+    - target: {fileID: 6576950350741797588, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: MailButtonParentTransform
+      value: 
+      objectReference: {fileID: 1324380615}
     - target: {fileID: 6858680578204539321, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: Element
       value: 
@@ -449,6 +473,22 @@ PrefabInstance:
     - target: {fileID: 7614425291814591602, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ApplicationHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437038127674396720, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437038127674396720, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1916609613}
+    - target: {fileID: 8437038127674396720, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TrashEmail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437038127674396720, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EmailHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8931347796462772834, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMax.y
@@ -693,11 +733,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1324380615 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5260748767854449678, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+  m_PrefabInstance: {fileID: 329768852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1916609611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5416314826516252663, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
   m_PrefabInstance: {fileID: 329768852}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1916609613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6576950350741797588, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+  m_PrefabInstance: {fileID: 329768852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916609611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b19b6753f34014e9873712f1713bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2093187146
 GameObject:
   m_ObjectHideFlags: 0
