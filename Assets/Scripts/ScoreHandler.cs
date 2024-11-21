@@ -8,7 +8,6 @@ public class ScoreHandler : MonoBehaviour
     public string prefix = "B$ ";
     public bool click;
     public float moneyToAdd;
-    [Space(10)]
 
     public float TotalMoney;
     private TMP_Text _notificationMoneyText;
@@ -31,7 +30,7 @@ public class ScoreHandler : MonoBehaviour
 
     private void Start()
     {
-        TotalMoney = 0.0012f;
+        TotalMoney = 0f;
     }
 
     public void AddMoney(float amount, float multiplier = 1)

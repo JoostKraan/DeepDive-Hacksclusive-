@@ -18,6 +18,7 @@ public class EmailHandler : MonoBehaviour {
         public string version;
         public int vertrouwlijkheid;
         public int documentType;
+        public float reward;
     }
 
     [System.Serializable]
@@ -36,7 +37,8 @@ public class EmailHandler : MonoBehaviour {
     [SerializeField] private Transform MailButtonParentTransform;
     [SerializeField] private GameObject MailNotification;
     [SerializeField] private WifiManager WifiManagerClass;
- 
+    [SerializeField] private ScoreHandler ScoreHandlerClass;
+
     [Header("Data")]
     [SerializeField] private AudioSource MailReceivedAudioSource;
     [SerializeField] private Animator MailReceivedAnimation;
@@ -88,8 +90,10 @@ public class EmailHandler : MonoBehaviour {
 
         if (EmailData.FileType.vertrouwlijkheid <= 0) {
             EmailData.Prefab.GetComponent<Image>().color = Color.red;
+            ScoreHandlerClass.AddMoney(EmailData.FileType.reward);
         } else {
             EmailData.Prefab.GetComponent<Image>().color = Color.green;
+            ScoreHandlerClass.AddMoney(EmailData.FileType.reward);
         }
     }
 
