@@ -115,7 +115,7 @@ public class WifiManager : MonoBehaviour
             if (isConnected)
             {
                 yield return new WaitForSeconds(30);
-                isConnected = false;
+                Disconnect();
                 wifiConnectedStat.SetActive(false);
                 wifiDisconnectedStat.SetActive(true);
             }
