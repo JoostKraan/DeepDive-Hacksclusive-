@@ -14,48 +14,74 @@ public class Chatroom : MonoBehaviour
     [SerializeField] private GameObject ResponseButtonPrefab;
     [SerializeField] private Color selectedTextColor = Color.yellow;
     [SerializeField] private Color defaultTextColor = Color.green;
+    [SerializeField] private AudioSource notificationSound;
 
     private GameObject currentChatroom;
     private GameObject currentlySelectedChatItem;
 
     // Dictionary waarin elke gebruiker gekoppeld wordt aan een lijst met volledige interacties
     private Dictionary<string, List<ChatInteraction>> chatDictionary = new Dictionary<string, List<ChatInteraction>>();
-    private Dictionary<string, List<GameObject>> chatHistory = new Dictionary<string, List<GameObject>>();
+    private Dictionary<string, List<ChatHistoryEntry>> chatHistory = new Dictionary<string, List<ChatHistoryEntry>>();
+    private Dictionary<string, int> unreadMessages = new Dictionary<string, int>();
+    private Dictionary<string, List<ChatInteraction>> backupDictionary = new Dictionary<string, List<ChatInteraction>>();
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M)) // M-toets om een bericht te simuleren
+        {
+            string randomChat = GetRandomChat();
+            ReceiveMessage(randomChat);
+        }
+    }
 
     private void Awake()
     {
-        InitializeChats();
-        LoadChatList();
+        InitializeChats(); // Chatgegevens initialiseren
+        StartCoroutine(SimulateIncomingMessages());
     }
+    private IEnumerator SimulateIncomingMessages()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(45f, 120f));
+
+            // Kies een willekeurige gebruiker uit het chatDictionary
+            List<string> chatNames = new List<string>(chatDictionary.Keys);
+            if (chatNames.Count > 0)
+            {
+                string randomChat = chatNames[Random.Range(0, chatNames.Count)];
+                ReceiveMessage(randomChat);
+            }
+            else
+            {
+                Debug.LogWarning("Geen gebruikers meer met beschikbare interacties.");
+            }
+        }
+    }
+
+
+
+    private string GetRandomChat()
+    {
+        List<string> chatNames = new List<string>(chatDictionary.Keys);
+
+        if (chatNames.Count == 0)
+        {
+            Debug.LogWarning("Geen chats beschikbaar in chatDictionary!");
+            return null; // Geen beschikbare chats
+        }
+
+        int randomIndex = Random.Range(0, chatNames.Count);
+        return chatNames[randomIndex];
+    }
+
 
     // Initialiseer de chatgegevens
     private void InitializeChats()
     {
-        // Voeg voorbeeldinteracties toe voor StampLicker420
-        chatDictionary.Add("StampLicker420", new List<ChatInteraction>
-        {
-            new ChatInteraction(
-                "Hey, alles goed?",
-                new List<ChatResponse>
-                {
-                    new ChatResponse("Ja, alles prima met jou?", () => RespondToChat("StampLicker420", "Goed om te horen! Ik doe rustig aan.")),
-                    new ChatResponse("Niet zo goed, eerlijk gezegd.", () => RespondToChat("StampLicker420", "Ah, vervelend om te horen. Kan ik helpen?")),
-                    new ChatResponse("Wat maakt het uit?", () => RespondToChat("StampLicker420", "Nou, ik dacht gewoon dat het aardig zou zijn om te vragen."))
-                }
-            ),
-            new ChatInteraction(
-                "Wat ben je aan het doen?",
-                new List<ChatResponse>
-                {
-                    new ChatResponse("Niet veel, gewoon chillen.", () => RespondToChat("StampLicker420", "Klinkt relaxed.")),
-                    new ChatResponse("Ik werk aan een project.", () => RespondToChat("StampLicker420", "Oh cool, wat voor project?")),
-                    new ChatResponse("Niks waar jij je zorgen over moet maken.", () => RespondToChat("StampLicker420", "Oke, rustig maar!"))
-                }
-            )
-        });
-
         // Voeg voorbeeldinteracties toe voor Hacker-man404
-        chatDictionary.Add("Hacker-man404", new List<ChatInteraction>
+        var hackerManInteractions = new List<ChatInteraction>
         {
             new ChatInteraction(
                 "Ik heb een nieuwe exploit gevonden.",
@@ -65,214 +91,366 @@ public class Chatroom : MonoBehaviour
                     new ChatResponse("Dat klinkt illegaal...", () => RespondToChat("Hacker-man404", "Illegaal? Nee joh, dit is gewoon voor de lol!")),
                     new ChatResponse("Interessant, hoe werkt het?", () => RespondToChat("Hacker-man404", "Ik kan je de details later sturen."))
                 }
-            ),
+            )
+        };
+
+        // Voeg voorbeeldinteracties toe voor LaZuR3s
+        var laZur3sInteractions = new List<ChatInteraction>
+        {
             new ChatInteraction(
-                "Ken je iemand die interesse heeft?",
+                "Hey, alles goed?",
                 new List<ChatResponse>
                 {
-                    new ChatResponse("Misschien, wat is het precies?", () => RespondToChat("Hacker-man404", "Het is een manier om toegang te krijgen zonder sporen achter te laten.")),
-                    new ChatResponse("Ik blijf liever buiten dit soort dingen.", () => RespondToChat("Hacker-man404", "Geen zorgen, ik vroeg het alleen maar.")),
-                    new ChatResponse("Wat zit er voor mij in?", () => RespondToChat("Hacker-man404", "Laten we zeggen dat er zeker wat voor jou in zit."))
+                    new ChatResponse("Ja, alles prima met jou?", () => RespondToChat("LaZuR3s", "Goed om te horen! Ik doe rustig aan.")),
+                    new ChatResponse("Niet zo goed, eerlijk gezegd.", () => RespondToChat("LaZuR3s", "Ah, vervelend om te horen. Kan ik iets doen?")),
+                    new ChatResponse("Wat maakt het uit?", () => RespondToChat("LaZuR3s", "Nou, ik dacht gewoon dat het aardig zou zijn om te vragen."))
                 }
             )
-        });
+        };
 
         // Voeg voorbeeldinteracties toe voor TotallyNotTheFBI
-        chatDictionary.Add("TotallyNotTheFBI", new List<ChatInteraction>
+        var totallyNotTheFBIInteractions = new List<ChatInteraction>
         {
             new ChatInteraction(
                 "Wij willen alleen maar praten.",
                 new List<ChatResponse>
                 {
-                    new ChatResponse("Ik heb niets te zeggen.", () => RespondToChat("TotallyNotTheFBI", "Dat zeggen ze allemaal.")),
+                    new ChatResponse("Ik heb niets te zeggen.", () => RespondToChat("TotallyNotTheFBI", "Dat zeggen ze allemaal...")),
                     new ChatResponse("Waarover dan?", () => RespondToChat("TotallyNotTheFBI", "Over je recente activiteiten.")),
-                    new ChatResponse("Ik wil mijn advocaat spreken.", () => RespondToChat("TotallyNotTheFBI", "Dat kun je later doen."))
-                }
-            ),
-            new ChatInteraction(
-                "Vertel ons alles.",
-                new List<ChatResponse>
-                {
-                    new ChatResponse("Ik weet van niks!", () => RespondToChat("TotallyNotTheFBI", "Hm, dat zeggen er veel.")),
-                    new ChatResponse("Waarom zou ik dat doen?", () => RespondToChat("TotallyNotTheFBI", "Omdat wij je op heterdaad betrapt hebben.")),
-                    new ChatResponse("Wat krijg ik ervoor terug?", () => RespondToChat("TotallyNotTheFBI", "Misschien strafvermindering."))
+                    new ChatResponse("Ik wil mijn advocaat spreken.", () => RespondToChat("TotallyNotTheFBI", "Dat kun je regelen, maar we weten al genoeg."))
                 }
             )
-        });
+        };
+
+        // Voeg entries toe aan chatDictionary
+        chatDictionary.Add("Hacker-man404", hackerManInteractions);
+        chatDictionary.Add("LaZuR3s", laZur3sInteractions);
+        chatDictionary.Add("TotallyNotTheFBI", totallyNotTheFBIInteractions);
+        Debug.Log($"Chat TotallyNotTheFBI toegevoegd aan chatDictionary met {chatDictionary["TotallyNotTheFBI"].Count} interacties.");
+
+        // Maak een kopie van alle interacties voor de backupDictionary
+        foreach (var entry in chatDictionary)
+        {
+            backupDictionary.Add(entry.Key, new List<ChatInteraction>(entry.Value));
+        }
+
+        Debug.Log($"Chats geïnitialiseerd. Aantal chats: {chatDictionary.Count}");
     }
+
 
     private void LoadChatList()
     {
-        foreach (var chat in chatDictionary.Keys)
+        // Wis de huidige lijst
+        foreach (Transform child in ChatListStack.transform)
         {
-            // Instantieer het chat-item
-            GameObject Chater = Instantiate(ChatPrefab, ChatListStack.transform);
+            Destroy(child.gameObject);
+        }
 
-            // Stel de naam en tekst in
+        // Itereer door de gebruikers met berichten in de chatHistory
+        foreach (var chat in chatHistory.Keys)
+        {
+            GameObject Chater = Instantiate(ChatPrefab, ChatListStack.transform);
             var textComponent = Chater.GetComponentInChildren<TextMeshProUGUI>();
-            textComponent.text = chat;
-            textComponent.color = defaultTextColor; // Standaard kleur
+
+            // Controleer of er ongelezen berichten zijn
+            int unreadCount = unreadMessages.ContainsKey(chat) ? unreadMessages[chat] : 0;
+            textComponent.text = unreadCount > 0
+                ? $"{chat} ({unreadCount})"
+                : chat;
+
+            textComponent.color = defaultTextColor;
             Chater.name = $"User: {chat}";
 
-            // Voeg een klik-event toe
+            // Voeg klikfunctionaliteit toe
             var button = Chater.GetComponent<UnityEngine.UI.Button>();
             if (button != null)
             {
-                string selectedChat = chat; // Maak een lokale kopie voor de lambda
+                string selectedChat = chat;
                 button.onClick.AddListener(() => SelectChat(Chater, selectedChat));
             }
         }
     }
 
-    private void SelectChat(GameObject chatItem, string chatName)
+
+
+    public void ReceiveMessage(string chatName)
     {
-        // Reset de kleur van de vorige geselecteerde chat
-        if (currentlySelectedChatItem != null)
+        // Controleer of de chat bestaat in het dictionary
+        if (chatDictionary.ContainsKey(chatName))
         {
-            var previousText = currentlySelectedChatItem.GetComponentInChildren<TextMeshProUGUI>();
-            previousText.color = defaultTextColor;
-        }
-
-        // Update de geselecteerde chat
-        currentlySelectedChatItem = chatItem;
-        SelectedChat = chatName;
-
-        // Verander de kleur van de nieuwe geselecteerde chat
-        var currentText = chatItem.GetComponentInChildren<TextMeshProUGUI>();
-        currentText.color = selectedTextColor;
-
-        print($"Geselecteerde chat: {SelectedChat}");
-
-        // Clear de huidige chatbox en laad de opgeslagen geschiedenis
-        ClearChatBox();
-        if (chatHistory.ContainsKey(chatName))
-        {
-            foreach (var message in chatHistory[chatName])
+            // Herstel interacties als de lijst leeg is en een back-up beschikbaar is
+            if (chatDictionary[chatName].Count == 0 && backupDictionary.ContainsKey(chatName))
             {
-                Instantiate(message, ChatBoxContent.transform);
+                Debug.Log($"Herstellen van interacties voor {chatName} vanuit back-up.");
+                chatDictionary[chatName] = new List<ChatInteraction>(backupDictionary[chatName]);
             }
-        }
-        else
-        {
-            chatHistory[chatName] = new List<GameObject>();
-            ShowChatroom(chatName, 0);
-        }
-    }
 
-    private void ShowChatroom(string chatName, int interactionIndex)
-    {
-        if (chatDictionary.TryGetValue(chatName, out List<ChatInteraction> chatInteractions))
-        {
-            if (interactionIndex < chatInteractions.Count)
+
+// Controleer opnieuw of er interacties zijn nadat het herstel is geprobeerd
+            if (chatDictionary[chatName].Count > 0)
             {
-                ChatInteraction interaction = chatInteractions[interactionIndex];
+                ChatInteraction interaction = chatDictionary[chatName][0];
+                Debug.Log($"Interactie gekozen voor {chatName}: {interaction.Message}");
 
-                // Render het bericht in de chatbox
-                GameObject chatMessage = Instantiate(ChatMessagePrefab, ChatBoxContent.transform);
-                var messageText = chatMessage.GetComponentInChildren<TextMeshProUGUI>();
-                messageText.text = $"{chatName}: {interaction.Message}";
-                chatHistory[chatName].Add(chatMessage);
-
-                // Verwijder vorige responsopties
-                foreach (Transform child in ChatBoxContent.transform)
+                // Voeg de interactie toe aan de geschiedenis
+                if (!chatHistory.ContainsKey(chatName))
                 {
-                    if (child.gameObject.CompareTag("ResponseButton"))
-                    {
-                        Destroy(child.gameObject);
-                    }
+                    chatHistory[chatName] = new List<ChatHistoryEntry>();
                 }
 
-                // Voeg responsopties toe aan de chatbox
-                HorizontalLayoutGroup layoutGroup = ChatBoxContent.GetComponent<HorizontalLayoutGroup>();
-                if (layoutGroup != null)
-                {
-                    layoutGroup.childControlHeight = true;
-                    layoutGroup.childForceExpandHeight = true;
-                    layoutGroup.childControlWidth = true;
-                    layoutGroup.childForceExpandWidth = true;
-                }
+                chatHistory[chatName].Add(new ChatHistoryEntry(interaction.Message, Color.yellow));
 
-                for (int i = 0; i < interaction.Responses.Count; i++)
-                {
-                    ChatResponse response = interaction.Responses[i];
-                    GameObject responseButton = Instantiate(ResponseButtonPrefab, ChatBoxContent.transform);
-                    responseButton.tag = "ResponseButton";
-                    var buttonText = responseButton.GetComponentInChildren<TextMeshProUGUI>();
-                    buttonText.text = response.ResponseText;
+                // Verwijder de interactie uit de lijst
+                chatDictionary[chatName].RemoveAt(0);
+                Debug.Log(
+                    $"Interactie verwerkt voor {chatName}. Overgebleven interacties: {chatDictionary[chatName].Count}");
 
-                    var buttonComponent = responseButton.GetComponent<Button>();
-                    if (buttonComponent != null)
-                    {
-                        buttonComponent.onClick.AddListener(() => StartCoroutine(HandleResponse(chatName, response.ResponseText, response.ResponseAction)));
-                    }
-
-                    // Zorg ervoor dat de knop automatisch schaalt met de tekst
-                    LayoutElement layoutElement = responseButton.GetComponent<LayoutElement>();
-                    if (layoutElement != null)
-                    {
-                        layoutElement.minHeight = 50;
-                        layoutElement.preferredHeight = -1;
-                        layoutElement.flexibleHeight = 1;
-                    }
-                }
+                // Werk de chatlijst bij
+                LoadChatList();
             }
             else
             {
-                Debug.LogWarning($"Geen verdere interacties beschikbaar voor {chatName}");
+                Debug.LogWarning($"Geen interacties beschikbaar voor {chatName} zelfs na herladen.");
+            }
+        }
+    }
+
+
+public void SelectChat(GameObject chatItem, string chatName)
+{
+    if (unreadMessages.ContainsKey(chatName))
+    {
+        unreadMessages[chatName] = 0;
+    }
+
+    currentlySelectedChatItem = chatItem;
+    SelectedChat = chatName;
+
+    ClearChatBox();  // Verwijder chatberichten
+    ClearResponseButtons();  // Verwijder alle response knoppen
+
+    // Voeg chatgeschiedenis toe aan de chatbox
+    if (chatHistory.ContainsKey(chatName))
+    {
+        Debug.Log($"Laden van de geschiedenis voor {chatName}, aantal berichten: {chatHistory[chatName].Count}");
+        foreach (var historyEntry in chatHistory[chatName])
+        {
+            AddMessageToChatBox(chatName, historyEntry.MessageText, historyEntry.MessageColor);
+        }
+    }
+    else
+    {
+        Debug.LogWarning($"Geen geschiedenis beschikbaar voor {chatName}");
+    }
+
+    // Controleer of er interacties beschikbaar zijn in de chatDictionary
+    if (chatDictionary.ContainsKey(chatName) && chatDictionary[chatName].Count > 0)
+    {
+        ChatInteraction interaction = chatDictionary[chatName][0];
+        Debug.Log($"Interactie geladen voor {chatName}: {interaction.Message}");
+
+        AddMessageToChatBox(chatName, interaction.Message, Color.yellow); // Voeg het bericht toe aan de chatbox
+
+        Transform responseButtonContainer = GetResponseButtonContainer();
+        foreach (var response in interaction.Responses)
+        {
+            Debug.Log($"Knop maken voor reactie: {response.ResponseText}"); // Debug om te controleren of responses worden toegevoegd
+
+            GameObject responseButton = Instantiate(ResponseButtonPrefab, responseButtonContainer);
+            var buttonText = responseButton.GetComponentInChildren<TextMeshProUGUI>();
+
+            if (buttonText != null)
+            {
+                buttonText.text = response.ResponseText; // Voeg de juiste response tekst toe
+            }
+            else
+            {
+                Debug.LogError("TextMeshProUGUI niet gevonden in ResponseButtonPrefab.");
+            }
+
+            var buttonComponent = responseButton.GetComponent<Button>();
+            if (buttonComponent != null)
+            {
+                buttonComponent.onClick.AddListener(() => HandleResponse(chatName, response)); // Stel de actie van de knop in
+            }
+            else
+            {
+                Debug.LogError("Button-component niet gevonden in ResponseButtonPrefab.");
+            }
+        }
+    }
+    else
+    {
+        Debug.LogWarning($"Geen interacties beschikbaar voor {chatName} of chat bestaat niet in chatDictionary.");
+    }
+
+    LoadChatList();
+}
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private Transform GetResponseButtonContainer()
+    {
+        Transform responseButtonContainer = ChatBoxContent.transform.Find("ResponseButtonContainer");
+        if (responseButtonContainer == null)
+        {
+            Debug.LogError("ResponseButtonContainer niet gevonden in ChatBoxContent.");
+        }
+        else
+        {
+            Debug.Log($"ResponseButtonContainer gevonden: {responseButtonContainer.name}");
+        }
+        return responseButtonContainer;
+    }
+
+private void HandleResponse(string chatName, ChatResponse response)
+{
+    Debug.Log($"Reactie gekozen voor {chatName}: {response.ResponseText}");
+
+    if (!chatHistory.ContainsKey(chatName))
+    {
+        chatHistory[chatName] = new List<ChatHistoryEntry>();
+    }
+    chatHistory[chatName].Add(new ChatHistoryEntry($"Jij:\n{response.ResponseText}", Color.blue));
+    AddMessageToChatBox("Jij", response.ResponseText, Color.blue);
+
+    // Roep de bijbehorende actie van de response aan
+    response.ResponseAction?.Invoke();
+
+    // Werk de UI bij zonder knoppen direct te verwijderen
+    UpdateChatUI(chatName);
+}
+
+private void UpdateChatUI(string chatName)
+{
+    ClearResponseButtons(); // Verwijder alleen de bestaande response knoppen
+    if (chatDictionary.ContainsKey(chatName) && chatDictionary[chatName].Count > 0)
+    {
+        var interaction = chatDictionary[chatName][0];
+        var responseButtonContainer = GetResponseButtonContainer();
+        if (responseButtonContainer != null)
+        {
+            foreach (var response in interaction.Responses)
+            {
+                var responseButton = Instantiate(ResponseButtonPrefab, responseButtonContainer);
+                var buttonText = responseButton.GetComponentInChildren<TextMeshProUGUI>();
+
+                if (buttonText != null)
+                {
+                    buttonText.text = response.ResponseText; // Stel de tekst van de response knop in
+                }
+                else
+                {
+                    Debug.LogError("TextMeshProUGUI niet gevonden in ResponseButtonPrefab.");
+                }
+
+                var buttonComponent = responseButton.GetComponent<Button>();
+                if (buttonComponent != null)
+                {
+                    buttonComponent.onClick.AddListener(() => HandleResponse(chatName, response));
+                }
+                else
+                {
+                    Debug.LogError("Button-component niet gevonden in ResponseButtonPrefab.");
+                }
             }
         }
         else
         {
-            Debug.LogWarning($"Geen chatgegevens gevonden voor {chatName}");
+            Debug.LogError("ResponseButtonContainer niet gevonden.");
         }
     }
+}
 
-    private IEnumerator HandleResponse(string chatName, string responseText, System.Action responseAction)
+
+private void ClearResponseButtons()
+{
+    Transform responseButtonContainer = GetResponseButtonContainer();
+    if (responseButtonContainer == null)
     {
-        // Render de reactie in de chatbox en verwijder de knoppen
-        ClearResponseButtons();
-        GameObject responseMessageObject = Instantiate(ChatMessagePrefab, ChatBoxContent.transform);
-        var responseMessageText = responseMessageObject.GetComponentInChildren<TextMeshProUGUI>();
-        responseMessageText.text = $"Jij: {responseText}";
-        chatHistory[chatName].Add(responseMessageObject);
-
-        // Wacht een willekeurig aantal seconden tussen 1 en 4
-        yield return new WaitForSeconds(Random.Range(1f, 4f));
-
-        // Voer de reactieactie uit en spawn de nieuwe responsopties
-        responseAction.Invoke();
+        Debug.LogError("ResponseButtonContainer niet gevonden in ChatBoxContent.");
+        return;
     }
 
-    private void ClearResponseButtons()
+    Debug.Log("Verwijder alle knoppen binnen ResponseButtonContainer.");
+    foreach (Transform child in responseButtonContainer)
     {
-        foreach (Transform child in ChatBoxContent.transform)
-        {
-            if (child.gameObject.CompareTag("ResponseButton"))
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        Destroy(child.gameObject);
+        Debug.Log($"Knop '{child.name}' verwijderd.");
     }
+}
 
     private void RespondToChat(string chatName, string responseMessage)
     {
         // Render de reactie in de chatbox
         GameObject responseMessageObject = Instantiate(ChatMessagePrefab, ChatBoxContent.transform);
         var responseText = responseMessageObject.GetComponentInChildren<TextMeshProUGUI>();
-        responseText.text = $"Jij: {responseMessage}";
-        chatHistory[chatName].Add(responseMessageObject);
+        notificationSound.Play();
+        responseText.text = $"{chatName}:\n{responseMessage}";
+        responseText.color = Color.yellow;
 
+        // Voeg het reactiebericht toe aan de geschiedenis
+        if (!chatHistory.ContainsKey(chatName))
+        {
+            chatHistory[chatName] = new List<ChatHistoryEntry>();
+        }
+
+        chatHistory[chatName].Add(new ChatHistoryEntry(responseMessage, Color.yellow));
+
+        EnsureButtonContainerIsLast();
         Debug.Log($"Reactie aan {chatName}: {responseMessage}");
-        // Hier kun je ook verdere interactie- of gamelogica toevoegen, zoals statistieken aanpassen of andere functies aanroepen
+    }
+    private void AddMessageToChatBox(string userName, string message, Color color)
+    {
+        GameObject newMessage = Instantiate(ChatMessagePrefab, ChatBoxContent.transform);
+        var textComponent = newMessage.GetComponentInChildren<TextMeshProUGUI>();
+        if (textComponent != null)
+        {
+            textComponent.text = $"{userName}: {message}"; // Voeg de gebruikersnaam toe aan het bericht
+            textComponent.color = color;
+            Debug.Log($"Bericht toegevoegd aan chatbox: {userName}: {message}");
+        }
+        else
+        {
+            Debug.LogError("TextMeshProUGUI niet gevonden in ChatMessagePrefab.");
+        }
+    }
+
+    private IEnumerator ReloadChatContent(string chatName)
+    {
+        yield return new WaitForEndOfFrame(); // Wacht tot het einde van de huidige frame
+        SelectChat(currentlySelectedChatItem, chatName);
+    }
+
+    public void ReloadChat(string chatName)
+    {
+        StartCoroutine(ReloadChatContent(chatName));
     }
 
     private void ClearChatBox()
     {
         foreach (Transform child in ChatBoxContent.transform)
         {
-            Destroy(child.gameObject);
+            // Zorg ervoor dat de `ResponseButtonContainer` zelf niet wordt verwijderd.
+            if (child.name != "ResponseButtonContainer")
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
+
+
+
+    private void EnsureButtonContainerIsLast()
+    {
+        Transform responseButtonContainer = GetResponseButtonContainer();
+        if (responseButtonContainer != null)
+        {
+            responseButtonContainer.SetAsLastSibling();
+        }
+    }
+
+
+
 }
 
 // Klasse voor een volledige interactie
@@ -284,9 +462,11 @@ public class ChatInteraction
     public ChatInteraction(string message, List<ChatResponse> responses)
     {
         Message = message;
-        Responses = responses;
+        Responses = responses ?? new List<ChatResponse>();
     }
 }
+
+
 
 // Klasse voor een mogelijke reactie
 public class ChatResponse
@@ -300,3 +480,24 @@ public class ChatResponse
         ResponseAction = responseAction;
     }
 }
+
+
+
+public class ChatHistoryEntry
+{
+    public string MessageText { get; private set; }
+    public Color MessageColor { get; private set; }
+    public List<string> ResponseOptions { get; private set; }
+    public bool IsProcessed { get; set; } // Nieuw veld om de status van de interactie bij te houden
+
+    public ChatHistoryEntry(string messageText, Color messageColor, List<string> responseOptions = null, bool isProcessed = false)
+    {
+        MessageText = messageText;
+        MessageColor = messageColor;
+        ResponseOptions = responseOptions;
+        IsProcessed = isProcessed;
+    }
+}
+
+
+
