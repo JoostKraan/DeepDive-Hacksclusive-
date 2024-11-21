@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class WifiManager : MonoBehaviour
 {
-    public List<GameObject> networks = new List<GameObject>();
-    public GameObject networkPrefab;
-    private string[] networknames = { "eduroam", "noorderpoort", "NP_loT", "publicroam", "free robux" };
-    public Transform networkContainer;
-    public bool isConnected = false;
-    public bool vpn = false;
-    public TextMeshProUGUI currentConnection;
-    public GameObject connectedIcon, notConnectedIcon;
-    public GameObject wifiDisconnectedStat, wifiConnectedStat;
-    public GameObject activeVpnIcon, inactiveVpnIcon;
+    [SerializeField]private List<GameObject> networks = new List<GameObject>();
+    [SerializeField]private GameObject networkPrefab;
+    [SerializeField]private string[] networknames = { "eduroam", "noorderpoort", "NP_loT", "publicroam", "free robux" };
+    [SerializeField]private Transform networkContainer;
+    [SerializeField]private bool isConnected = false;
+    [SerializeField]private bool vpn = false;
+    [SerializeField]private TextMeshProUGUI currentConnection;
+    [SerializeField]private GameObject connectedIcon, notConnectedIcon;
+    [SerializeField]private GameObject wifiDisconnectedStat, wifiConnectedStat;
+    [SerializeField]private GameObject activeVpnIcon, inactiveVpnIcon;
 
     void Start()
     {
@@ -68,16 +68,7 @@ public class WifiManager : MonoBehaviour
 
         if (currentConnection != null)
         {
-            if (vpn)
-            {
-                Debug.Log("Connect is safe");
-            }
-            else
-            {
-                Debug.Log("Connect is unsafe");
-            }
             currentConnection.text = $"Connected to: {networkName}";
-            Debug.Log($"Connected to: {networkName}");
         }
     }
 
