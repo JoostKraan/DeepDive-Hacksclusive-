@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreHandler : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class ScoreHandler : MonoBehaviour
     private TMP_Text _totalMoneyText;
 
     private NotificationPopup notificationPopup;
+    private Image notificationMoneyImage;
 
     private float notificationMoney;
 
     private void Awake()
     {
-        _notificationMoneyText = GameObject.Find("NotificationMoney").transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>();
         notificationPopup = GameObject.Find("NotificationMoney").transform.GetChild(0).GetComponent<NotificationPopup>();
+        notificationMoneyImage = notificationPopup.GetComponent<Image>();
+        _notificationMoneyText = notificationPopup.transform.GetChild(0).GetComponent<TMP_Text>();
         _totalMoneyTransform = GameObject.Find("TotalMoney").transform;
         _totalMoneyText = _totalMoneyTransform.GetComponent<TMP_Text>();
     }
@@ -33,20 +36,32 @@ public class ScoreHandler : MonoBehaviour
 
     public void AddMoney(float amount, float multiplier = 1)
     {
-        amount *= multiplier;
+        if (amount != 0)
+        {
+            amount *= multiplier;
 
-        TotalMoney += amount;
-        notificationMoney = amount;
+            TotalMoney += amount;
+            notificationMoney = amount;
 
-        UpdateText();
+            UpdateText();
 
-        notificationPopup.Play();
+            bool positive = amount > 0;
+            if (positive)
+            {
+                notificationMoneyImage.color = new Color(0.7415032f, 1, 0.7311321f, 1);
+            }
+            else
+            {
+                notificationMoneyImage.color = new Color(0.9471698f, 0.3770807f, 0.40087f, 1);
+            }
+            notificationPopup.Play();
 
-        var moneyPopup = Resources.Load("Prefabs/MoneyPopup");
-        var moneyPopupScript = moneyPopup.GetComponent<MoneyPopup>();
-        moneyPopupScript.money = amount;
-        moneyPopupScript.prefix = prefix;
-        Instantiate(moneyPopup, _totalMoneyTransform); //Spawn money popup
+            var moneyPopup = Resources.Load("Prefabs/MoneyPopup");
+            var moneyPopupScript = moneyPopup.GetComponent<MoneyPopup>();
+            moneyPopupScript.money = amount;
+            moneyPopupScript.prefix = prefix;
+            Instantiate(moneyPopup, _totalMoneyTransform); //Spawn money popup
+        }
     }
 
     private void UpdateText()
