@@ -11,11 +11,14 @@ public class ApplicationHandler : MonoBehaviour {
     [SerializeField] private GameObject Element;
 
     [SerializeField] private Dictionary<string, GameObject> ElementHistory = new Dictionary<string, GameObject>();
+    [SerializeField] private Canvas canvas;
+    private bool IsDragging = false;
+    
 
     public void InteractApplication(string ApplicationName) {
         foreach (PanelInfo panelInfo in Panels) {
             if (panelInfo.Name != ApplicationName) continue;
-            panelInfo.Panel.active = !panelInfo.Panel.active;
+            panelInfo.Panel.SetActive(!panelInfo.Panel.active);
             if (panelInfo.Minimized || false) {
                 panelInfo.Minimized = false;
             } else {
@@ -35,7 +38,7 @@ public class ApplicationHandler : MonoBehaviour {
     public void MinimizeApplication(string ApplicationName) {
         foreach (PanelInfo panelInfo in Panels) {
             if (panelInfo.Name != ApplicationName) continue;
-            panelInfo.Panel.active = false;
+            panelInfo.Panel.SetActive(false);
             panelInfo.Minimized = true;
         }
     }
@@ -43,7 +46,7 @@ public class ApplicationHandler : MonoBehaviour {
     public void HandleTaskbarElement(string ApplicationName) {
         foreach (PanelInfo panelInfo in Panels) {
             if (panelInfo.Name != ApplicationName) continue;
-            panelInfo.Panel.active = !panelInfo.Panel.active;
+            panelInfo.Panel.SetActive(!panelInfo.Panel.active);
             panelInfo.Minimized = !panelInfo.Minimized;
         }
     }
@@ -51,7 +54,7 @@ public class ApplicationHandler : MonoBehaviour {
     public void CloseApplication(string ApplicationName) {
         foreach (PanelInfo panelInfo in Panels) {
             if (panelInfo.Name != ApplicationName) continue;
-            panelInfo.Panel.active = false;
+            panelInfo.Panel.SetActive(false);
             Destroy(ElementHistory[panelInfo.Name]);
             ElementHistory.Remove(panelInfo.Name);
         }
