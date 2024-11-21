@@ -18,6 +18,7 @@ public class EmailHandler : MonoBehaviour {
         public string version;
         public int vertrouwlijkheid;
         public int documentType;
+        public float reward;
     }
 
     [System.Serializable]
@@ -35,7 +36,9 @@ public class EmailHandler : MonoBehaviour {
     [Header("Paths")]
     [SerializeField] private Transform MailButtonParentTransform;
     [SerializeField] private GameObject MailNotification;
- 
+    [SerializeField] private WifiManager WifiManagerClass;
+    [SerializeField] private ScoreHandler ScoreHandlerClass;
+
     [Header("Data")]
     [SerializeField] private AudioSource MailReceivedAudioSource;
     [SerializeField] private Animator MailReceivedAnimation;
@@ -56,8 +59,10 @@ public class EmailHandler : MonoBehaviour {
 
     private IEnumerator EmailLoop() {
         while (true) {
-            SendEmail(); // Call your function here
-            EmailInterval = Random.Range(5, 15);
+            EmailInterval = Random.Range(Random.Range(5, 10), Random.Range(10, 25));
+            if (WifiManagerClass.isConnected == true) {
+                SendEmail();
+            } else EmailInterval = 1;
             yield return new WaitForSeconds(EmailInterval);
         }
     }
@@ -85,8 +90,10 @@ public class EmailHandler : MonoBehaviour {
 
         if (EmailData.FileType.vertrouwlijkheid <= 0) {
             EmailData.Prefab.GetComponent<Image>().color = Color.red;
+            ScoreHandlerClass.AddMoney(EmailData.FileType.reward);
         } else {
             EmailData.Prefab.GetComponent<Image>().color = Color.green;
+            ScoreHandlerClass.AddMoney(EmailData.FileType.reward);
         }
     }
 
@@ -100,8 +107,9 @@ public class EmailHandler : MonoBehaviour {
         NewMailButton.transform.Find("Company").GetComponent<TMP_Text>().text = Company;
         NewMailButton.transform.Find("Zender").GetComponent<TMP_Text>().text = Sender;
 
-        Email RandomEmail = Data.emails[Random.Range(0, Data.emails.Count)];
-        File RandomFileType = Data.files[Random.Range(0, Data.files.Count)];
+        int RandomIndexForMailData = Random.Range(0, Data.emails.Count);
+        Email RandomEmail = Data.emails[RandomIndexForMailData];
+        File RandomFileType = Data.files[RandomIndexForMailData];
         NewMailButton.transform.Find("Onderwerp").GetComponent<TMP_Text>().text = string.Format("Subject: {0}", RandomEmail.subject);
 
         int NewIndex = Random.Range(0, 999999);

@@ -17,7 +17,7 @@ public class MoneyPopup : MonoBehaviour
     }
     private void Start()
     {
-        Destroy(gameObject, 3); //Destroy self after 3 seconds
+        Destroy(gameObject, 6); //Destroy self after 6 seconds
     }
     public void PlayPopup(float money)
     {

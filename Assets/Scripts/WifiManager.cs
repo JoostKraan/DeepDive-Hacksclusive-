@@ -9,8 +9,8 @@ public class WifiManager : MonoBehaviour
     [SerializeField]private GameObject networkPrefab;
     [SerializeField]private string[] networknames = { "eduroam", "noorderpoort", "NP_loT", "publicroam", "free robux" };
     [SerializeField]private Transform networkContainer;
-    [SerializeField]private bool isConnected = false;
-    [SerializeField]private bool vpn = false;
+    public bool isConnected = false;
+    public bool vpn = false;
     [SerializeField]private TextMeshProUGUI currentConnection;
     [SerializeField]private GameObject connectedIcon, notConnectedIcon;
     [SerializeField]private GameObject wifiDisconnectedStat, wifiConnectedStat;
