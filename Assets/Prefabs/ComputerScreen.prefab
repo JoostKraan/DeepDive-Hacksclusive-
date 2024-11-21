@@ -870,6 +870,11 @@ MonoBehaviour:
     Element: {fileID: 1884699740406474232, guid: 3b7edfd397804e04ead7900033bf17bc, type: 3}
     Minimized: 0
     TrayIcon: {fileID: 21300000, guid: 81ae3a496b6c4d444bae8a25b7a27027, type: 3}
+  - Panel: {fileID: 9132343810638788166}
+    Name: Wifi
+    Element: {fileID: 1884699740406474232, guid: 3b7edfd397804e04ead7900033bf17bc, type: 3}
+    Minimized: 0
+    TrayIcon: {fileID: 21300000, guid: 0efdccd159787e649af630cffd96f9f9, type: 3}
   ElementParent: {fileID: 8687065087821800923}
   Element: {fileID: 1884699740406474232, guid: 3b7edfd397804e04ead7900033bf17bc, type: 3}
   canvas: {fileID: 0}
@@ -2610,6 +2615,11 @@ PrefabInstance:
 --- !u!224 &3634454010547760248 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2703523298862457257, guid: 7a97b14d662be8d41912f1b71c48f1a5, type: 3}
+  m_PrefabInstance: {fileID: 1726273625440456145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9132343810638788166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7586435584447331223, guid: 7a97b14d662be8d41912f1b71c48f1a5, type: 3}
   m_PrefabInstance: {fileID: 1726273625440456145}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2478184366496722048
