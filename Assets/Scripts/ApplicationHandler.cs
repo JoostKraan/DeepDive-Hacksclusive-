@@ -26,11 +26,11 @@ public class ApplicationHandler : MonoBehaviour {
                     Destroy(ElementHistory[panelInfo.Name]);
                     ElementHistory.Remove(panelInfo.Name);
                 } else {
+                    panelInfo.Panel.transform.parent.SetAsLastSibling();
                     ElementHistory.Add(panelInfo.Name, Instantiate(Element));
                     ElementHistory[panelInfo.Name].transform.SetParent(ElementParent);
                     ElementHistory[panelInfo.Name].GetComponent<Button>().onClick.AddListener((() => HandleTaskbarElement(ApplicationName)));
-                    ElementHistory[panelInfo.Name].transform.Find("Icon").GetComponent<Image>().sprite =
-                        panelInfo.TrayIcon;
+                    ElementHistory[panelInfo.Name].transform.Find("Icon").GetComponent<Image>().sprite = panelInfo.TrayIcon;
                 }
             }
         }
