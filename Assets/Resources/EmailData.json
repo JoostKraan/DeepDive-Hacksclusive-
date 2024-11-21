@@ -1,0 +1,247 @@
+{
+    "emails": [
+      {
+        "email": "Hello Team,\n\nI wanted to provide a quick update on the cookie supply in the office. We are running low on stock and will need to restock soon. Attached is a PDF (version 1.0) with the current cookie inventory and suggested orders. Please review the document and let me know if you have any preferences for specific cookie types or brands you'd like to see in the office.\n\nI will place the order by [Date], so please send your suggestions before then. If anyone has dietary restrictions or special requests, feel free to mention those as well.\n\nBest regards,\n{1}",
+        "subject": "Cookie Supply Update"
+      },
+      {
+        "email": "Hello Team,\n\nI wanted to let you know that the PowerPoint presentation has been updated. The latest version(v1.3) is attached to this email. Please review the updated slides and make any necessary adjustments before our next meeting.\n\nIf you have any questions or need further changes, feel free to reach out.\n\nBest regards,\n{0}",
+        "subject": "Project Update"
+      },
+      {
+        "email": "Hey {1},\n\nI’m currently on a bit of a break in the restroom and just realized we’re out of toilet paper. I’ve attached a blueprint(v1.0) showing where the toilet paper is usually stored. Could you please help me out and restock it ASAP?\n\nThanks a ton!\n\nBest,\n{0}",
+        "subject": "FERRY IMPORTANT!!!"
+      },
+      {
+        "email": "Hey {1},\n\nI’m currently on a bit of a break and realized I need this year’s sales report. I’ve got last year’s report(v3.1) attached here just in case you need a reference. Could you send over this year’s report when you get a chance?\n\nThanks a bunch!\n\nBest,\n{0}",
+        "subject": "Sales Report"
+      },
+      {
+        "email": "Hello {1},\n\nCould you please save the attached file, `pizza_order.txt`, on the server? This file contains our office pizza order details(v31.2). Let me know if you need any additional information or if there are any issues with the file.\n\nThanks for your help!\n\nBest,\n{0}",
+        "subject": "PIZZA!!!"
+      },
+      {
+        "email": "Hello {1},\n\nWe need to install new antivirus software on our office computers. I’ve attached a file named `instructions.txt` that contains the installation instructions(v1.2) for the new antivirus.\n\nCould you please review the instructions and proceed with the installation? Let me know if you encounter any issues or need further assistance.\n\nThanks for your prompt attention to this matter!\n\nBest regards,\n{0}",
+        "subject": "AntiVirus"
+      },
+      {
+        "email": "Hello {1},\n\nWe’ve been experiencing recurring issues with our delivery driver going to the wrong building. This has caused significant delays and disruptions. I’ve attached a PowerPoint presentation(v3.6) outlining why we need to consider changing our delivery services.\n\nPlease review the attached presentation and let’s discuss potential solutions to improve our delivery process.\n\nThank you for your attention to this matter.\n\nBest regards,\n{0}",
+        "subject": "Wrong deleveri AGAIN!!!"
+      },
+      {
+        "email": "Hello Team,\n\nWe’ve encountered a virus going around the office that’s been nicknamed 'Billy.' This virus is known to cause pop-ups and other disruptions. Please review the attached guidelines(v1.0) on how to deal with this issue.\n\nThe attached `.txt` file contains important steps to follow to ensure your systems remain secure and to address any infections promptly.\n\nIf you have any questions or need assistance, please reach out to IT support.\n\nBest regards,\n{0}",
+        "subject": "Billy"
+      },
+      {
+        "email": "Hi {1},\n\nI wanted to let you know that due to a new deal we’ve made with Motorola, you might be receiving a Motorola work phone soon. To help you get familiar with it, I’ve attached a helpful guide(v1.0) that explains how to operate the device.\n\nPlease take a look at the guide when you get a chance. Let me know if you have any questions or concerns about the new phones.\n\nBest regards,\n{0}",
+        "subject": "Phone"
+      },
+      {
+        "email": "Hello {1},\n\nWe are reaching out to see if you would be available to work some overtime hours. We’ve attached a schedule in the form of a `.txt` file for your review(v20.1). Please let us know if you can accommodate any of the listed time slots.\n\nYour flexibility and assistance are greatly appreciated!\n\nBest regards,\n{0}",
+        "subject": "Overtime"
+      },
+      {
+        "email": "Hey {1},\n\nI know we’re not really supposed to talk about this, but I was curious—how much do you make here? I’ve attached a `.txt` file with my yearly salary for comparison(v1.0). Let’s keep this between us.\n\nLooking forward to hearing from you!\n\nBest,\n{0}",
+        "subject": "NOT salary"
+      },
+      {
+        "email": "Hey {1},\n\nSooo... funny story. I *might* have accidentally taken your lunch from the fridge again. It looked so much like mine! Anyway, I owe you lunch (again). I'll make it up to you, I promise. Just please don’t report me to HR!(v6.0) \n\nBest,\n{0}",
+        "subject": "sorry..."
+      },
+      {
+        "email": "Hey Team,\n\nWe have a crisis on our hands. The coffee machine is EMPTY and there’s no backup! This is an emergency situation, folks. I’m attaching a plan(v1.0) to handle this (step 1: panic, step 2: restock ASAP). Let’s get some coffee flowing before the productivity levels crash!\n\nHelp us, you’re our only hope! \n\nThanks,\n{0}",
+        "subject": "Emergency!"
+      },
+      {
+        "email": "Hi IT Team,\n\nSo, I’m not sure what’s happening, but the printer just sent this email. Apparently, it wants a raise for all the 'heavy printing' it’s been doing. It’s attached its own “salary demands” in a TXT(v1.0). Maybe it needs a firmware update... or therapy. \n\nPlease advise!\n\nBest,\n{0}",
+        "subject": "Its alive!"
+      },
+      {
+        "email": "Hey Team,\n\nI know the last slice of pizza is a hot topic right now, but before anyone grabs it, I’d like to formally present my case. Please find attached a detailed PowerPoint outlining why *I* deserve that last slice(v1.2). \n\nGive it a look, and if you agree with my argument, feel free to hand over that slice!\n\nBest,\n{0}",
+        "subject": "My pizza"
+      },
+      {
+        "email": "Hi Team,\n\nI’ve been thinking, and I believe it’s time we made a change. I’ve put together a PowerPoint presentation(v1.7) with a solid case for turning Casual Fridays into Casual Everyday. It’s attached for your review, and it covers key points like increased happiness, comfort, and productivity. \n\nTake a look and let me know if we can get this rolling! (And maybe let me know how you feel about sweatpants as formal attire!)\n\nCheers,\n{0}",
+        "subject": "Casual friday"
+      },
+      {
+        "email": "Dear Valued User,\n\nWe have detected unusual activity on your account and need you to verify your information immediately to prevent any disruptions. Please find the attached file with detailed instructions on how to update your account.\n\nIt is crucial that you complete this update within 24 hours to ensure your account remains secure. Failure to do so may result in temporary suspension of your account.\n\nThank you for your prompt attention to this matter.\n\nBest regards,\n{0} Support Team",
+        "subject": "Account"
+      },
+      {
+        "email": "Hi {1},\n\nCongratulations! You’ve been selected to receive an exclusive gift from us. As a token of appreciation for being a loyal customer, we’re offering you a special download.\n\nTo claim your free gift, simply download the attached file. Inside, you’ll find a special surprise just for you! Don't miss out on this limited-time offer.\n\nEnjoy your gift and thank you for your continued support.\n\nBest wishes,\nThe {0} Team",
+        "subject": "Free Money"
+      }
+    ],
+    "files": [
+      {
+        "fileNaam": "cookie_supply_order.txt",
+        "version": "1.0",
+        "vertrouwlijkheid": 1,
+        "documentType": 1,
+        "reward": 0.004
+      },
+      {
+        "fileNaam": "Project.pptx",
+        "version": "1.3",
+        "vertrouwlijkheid": 2,
+        "documentType": 1,
+        "reward": 0
+      },
+      {
+        "fileNaam": "BLueprint.txt",
+        "version": "1.0",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "Sales1997.txt",
+        "version": "3.1",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "PizzaOrder.txt",
+        "version": "31.2",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0.004
+      },
+      {
+        "fileNaam": "Instructions.txt",
+        "version": "1.2",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0.004
+      },
+      {
+        "fileNaam": "NewDeleveri.pptx",
+        "version": "3.6",
+        "vertrouwlijkheid": 0,
+        "documentType": 1,
+        "reward": 0.004
+      },
+      {
+        "fileNaam": "Guidlines.txt",
+        "version": "1.0",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "Guide.txt",
+        "version": "1.0",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "Schedule.txt",
+        "version": "20.1",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "NotMySalery.exe",
+        "version": "1.0",
+        "vertrouwlijkheid": 0,
+        "documentType": 0,
+        "reward": -0.004
+      },
+      {
+        "fileNaam": "Voucher.txt",
+        "version": "6.0",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "CoffiePLan.txt",
+        "version": "1.0",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "PrinterSalery.txt",
+        "version": "1.0",
+        "vertrouwlijkheid": 2,
+        "documentType": 0,
+        "reward": 0
+      },
+      {
+        "fileNaam": "MyPizza.pptx",
+        "version": "1.2",
+        "vertrouwlijkheid": 2,
+        "documentType": 1,
+        "reward": 0
+      },
+      {
+        "fileNaam": "Friday.pptx",
+        "version": "1.7",
+        "vertrouwlijkheid": 2,
+        "documentType": 1,
+        "reward": 0
+      },
+      {
+        "fileNaam": "Virus.exe",
+        "version": "1.0",
+        "vertrouwlijkheid": 0,
+        "documentType": 0,
+        "reward": -0.004
+      },
+      {
+        "fileNaam": "NotAVirus.exe",
+        "version": "1.0",
+        "vertrouwlijkheid": 0,
+        "documentType": 0,
+        "reward": -0.004
+      }
+    ],
+    "namen": [
+      "Harry Baker",
+      "Wendy Clark",
+      "David Allen",
+      "Peter Davis",
+      "Mary Smith",
+      "Laura Jones",
+      "Brian White",
+      "Karen Brown",
+      "John Adams",
+      "Susan Green",
+      "Emily Harris",
+      "George Lewis",
+      "Linda Moore",
+      "Nancy Scott",
+      "Jason Hill",
+      "Betty Evans",
+      "Mark Young",
+      "Helen King",
+      "Chris Ward",
+      "Bruce Wayne"
+    ],
+    "company": [
+      "HP",
+      "Display.Inc",
+      "NVIDIA",
+      "Rijksoverheid",
+      "IBM",
+      "Moterola",
+      "Money.Ltd",
+      "UPS",
+      "Fedex",
+      "BestBuy"
+  
+    ],
+    "NonCompany": [
+      "Intel",
+      "Apple",
+      "NVIDIA",
+      "Goldmen.inc",
+      "CocaCola",
+      "McDonalds"
+    ]
+  }  
