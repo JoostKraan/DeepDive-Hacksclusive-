@@ -15,7 +15,7 @@ public class MoneyPopup : MonoBehaviour
         _moneyText = GetComponent<TMP_Text>();
         PlayPopup(money);
     }
-    private void Update()
+    private void Start()
     {
         Destroy(gameObject, 6); //Destroy self after 6 seconds
     }
