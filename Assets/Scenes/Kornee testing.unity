@@ -190,6 +190,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ComputerScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 2677295482047882662, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677295482047882662, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677295482047882662, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677295482047882662, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3300894065168787472, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -459,6 +475,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1603964506773318411, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
   m_PrefabInstance: {fileID: 86319630}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &109757853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6770421215531796296, guid: 07e14afc2a5db0440b2b9514c739c224, type: 3}
+  m_PrefabInstance: {fileID: 480952233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &325201200
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +658,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 326
       objectReference: {fileID: 0}
+    - target: {fileID: 5149173078223955436, guid: 07e14afc2a5db0440b2b9514c739c224, type: 3}
+      propertyPath: ChatBoxContent
+      value: 
+      objectReference: {fileID: 109757853}
     - target: {fileID: 6479548477235153775, guid: 07e14afc2a5db0440b2b9514c739c224, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

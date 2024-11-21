@@ -47,6 +47,7 @@ public class ApplicationHandler : MonoBehaviour {
         foreach (PanelInfo panelInfo in Panels) {
             if (panelInfo.Name != ApplicationName) continue;
             panelInfo.Panel.SetActive(!panelInfo.Panel.active);
+            panelInfo.Panel.transform.parent.SetAsLastSibling();
             panelInfo.Minimized = !panelInfo.Minimized;
         }
     }

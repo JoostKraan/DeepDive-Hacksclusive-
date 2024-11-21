@@ -48,10 +48,14 @@ public class ScoreHandler : MonoBehaviour
             if (positive)
             {
                 notificationMoneyImage.color = new Color(0.7415032f, 1, 0.7311321f, 1);
+                GameObject.Find("ReasonText").GetComponent<TMP_Text>().text =
+                    "You've done a successful job here is your reward!";
             }
             else
             {
                 notificationMoneyImage.color = new Color(0.9471698f, 0.3770807f, 0.40087f, 1);
+                GameObject.Find("ReasonText").GetComponent<TMP_Text>().text =
+                    "You've done a bad job and were caught we've taken some of ur money!";
             }
             notificationPopup.Play();
 

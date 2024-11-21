@@ -23,6 +23,9 @@ public class Browser : MonoBehaviour
 
     private string lastSuggestion = "";
 
+    [Header("Variables")] 
+    public bool IsOnValidTab = false;
+
     void Start()
     {
         inputfield.onValueChanged.AddListener(OnInputChanged);
@@ -36,7 +39,8 @@ public class Browser : MonoBehaviour
         {
             if (window.name == activeWindow)
             {
-                window.SetActive(true); 
+                window.SetActive(true);
+                IsOnValidTab = true;
             }
             else
             {
