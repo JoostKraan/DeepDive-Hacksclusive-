@@ -105,7 +105,7 @@ public class HackingHandler : MonoBehaviour {
 
     public IEnumerator FinishedPasswordLogging(bool GuessedRight) {
         GuessedRightHack = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         ClearLogs();
 
         if (GuessedRight) {
@@ -116,6 +116,7 @@ public class HackingHandler : MonoBehaviour {
 
         IsProcessing = false;
         GuessedRightHack = false;
+        Attempts = 0;
     }
 
     private void ClearLogs() {
