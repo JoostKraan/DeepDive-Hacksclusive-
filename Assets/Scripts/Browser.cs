@@ -4,13 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Browser : MonoBehaviour
-{
+public class Browser : MonoBehaviour {
     [SerializeField] private GameObject[] windows;
     [SerializeField] private TMP_InputField inputfield;
     [SerializeField] private string temptext;
     [SerializeField] private RectTransform suggestionsPanel;
     [SerializeField] private GameObject suggestionPrefab;
+    [SerializeField] private GameObject noConnectionPrefab;
+    [SerializeField] private WifiManager WifiManagerClass;
 
     private List<string> websiteSuggestions = new List<string>
     {
@@ -51,6 +52,8 @@ public class Browser : MonoBehaviour
 
     void Update()
     {
+        noConnectionPrefab.SetActive(!WifiManagerClass.isConnected);
+
         // Check for the Enter key to process the input
         if (Input.GetKeyDown(KeyCode.Return))
         {

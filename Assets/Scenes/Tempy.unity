@@ -474,6 +474,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4927348631786352212, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
+      propertyPath: WifiManagerClass
+      value: 
+      objectReference: {fileID: 590624496}
+    - target: {fileID: 4927348631786352212, guid: 658eb449cc356534bbe20e92e4c0e528, type: 3}
       propertyPath: ScoreHandlerClass
       value: 
       objectReference: {fileID: 583490986}

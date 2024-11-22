@@ -13,6 +13,7 @@ public class HackingHandler : MonoBehaviour {
     [Header("Classes")] 
     [SerializeField] private Browser BrowserClass;
     [SerializeField] private ScoreHandler ScoreHandlerClass;
+    [SerializeField] private WifiManager WifiManagerClass;
 
     [Header("Transforms")]
     [SerializeField] private Transform LogsTransform;
@@ -37,6 +38,11 @@ public class HackingHandler : MonoBehaviour {
 
     public void PasswordGrabber() {
         if (IsProcessing) return;
+        if (WifiManagerClass.isConnected == false) {
+            AddTextLog("Try connecting to the internet first!");
+            return;
+        }
+
         if (BrowserClass.IsOnValidTab) {
             LogHackingPasswords();
         } else {
