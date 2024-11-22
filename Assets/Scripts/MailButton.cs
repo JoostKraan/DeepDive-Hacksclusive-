@@ -9,11 +9,12 @@ public class MailButton : MonoBehaviour {
     public GameObject ComputerScreenGameObject;
     public EmailHandler EmailHandler;
     public int Index;
+    public string Username;
 
     public void OpenMail() {
         if (EmailData == null) return;
 
-        ComputerScreenGameObject.transform.Find("EmailText").GetComponent<TMP_Text>().text = string.Format(EmailData.EmailData.email, EmailData.Sender, "Tempy");
+        ComputerScreenGameObject.transform.Find("EmailText").GetComponent<TMP_Text>().text = string.Format(EmailData.EmailData.email, EmailData.Sender, Username);
         ComputerScreenGameObject.transform.Find("FileText").GetComponent<TMP_Text>().text = EmailData.FileType.fileNaam;
 
         EmailHandler.SelectEmail(Index);

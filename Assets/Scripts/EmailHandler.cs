@@ -44,6 +44,7 @@ public class EmailHandler : MonoBehaviour {
     [SerializeField] private Animator MailReceivedAnimation;
     private Dictionary<int, EmailStruct> ActiveEmails = new Dictionary<int, EmailStruct>();
     public TextAsset jsonFile;
+    public string Username;
     
     
     // -- Privates
@@ -120,6 +121,7 @@ public class EmailHandler : MonoBehaviour {
         ButtonComponent.EmailData = ActiveEmails[NewIndex];
         ButtonComponent.ComputerScreenGameObject = gameObject.transform.Find("Inside").gameObject;
         ButtonComponent.EmailHandler = gameObject.GetComponentInParent<EmailHandler>();
+        ButtonComponent.Username = Username;
         ButtonComponent.Index = NewIndex;
 
         MailNotification.SetActive(true);

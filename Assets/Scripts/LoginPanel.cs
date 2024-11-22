@@ -8,6 +8,7 @@ public class LoginPanel : MonoBehaviour
     private TMP_Text usernameField;
     private TMP_Text passwordField;
     private TMP_Text loginField;
+    [SerializeField] private EmailHandler EmailHandlerClass;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class LoginPanel : MonoBehaviour
         else
         {
             transform.parent.gameObject.SetActive(false);
+            EmailHandlerClass.Username = usernameField.text;
         }
     }
 

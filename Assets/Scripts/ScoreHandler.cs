@@ -8,6 +8,7 @@ public class ScoreHandler : MonoBehaviour
     public string prefix = "B$ ";
     public bool click;
     public float moneyToAdd;
+    public AudioSource moneySource; 
 
     public float TotalMoney;
     private TMP_Text _notificationMoneyText;
@@ -48,6 +49,7 @@ public class ScoreHandler : MonoBehaviour
             if (positive)
             {
                 notificationMoneyImage.color = new Color(0.7415032f, 1, 0.7311321f, 1);
+                moneySource.Play();
                 GameObject.Find("ReasonText").GetComponent<TMP_Text>().text =
                     "You've done a successful job here is your reward!";
             }
